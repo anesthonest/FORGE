@@ -1,0 +1,58 @@
+[
+  {
+    "id": "mem-va4dx6ez8",
+    "prompt_hash": "eW91IGFyZSB0aGUgZm9yZ2VvcyBwbGFubmVyLgpnb2FsOiBoaSB3aGF0IGlzIHlvdXIgbmFtZSBzeXN0ZW0KCnRhc2s6CjEuIGJyZWFrIHRoaXMgZ29hbCBpbnRvIDMtNSBkZXRlcm1pbmlzdGljIG",
+    "task_type": "planning",
+    "input": "You are the ForgeOS Planner.\nGOAL: Hi what is your name system\n\nTASK:\n1. Break this goal into 3-5 deterministic engineering steps.\n2. Identify dependencies.\n3. Return ONLY valid JSON.\n\nJSON Structure:\n{\n  \"strategic_plan\": \"string\",\n  \"steps\": [\n    { \"id\": number, \"title\": \"string\", \"description\": \"string\", \"requires_debug\": boolean }\n  ]\n}",
+    "output": "{\"success\":false,\"error\":\"QUOTA_EXCEEDED\",\"message\":\"The AI strategist is currently resting due to quota limits.\",\"fallback\":true}",
+    "model_used": "openai/gpt-4o",
+    "success_rate": 1,
+    "timestamp": "2026-05-18T09:36:02.068Z",
+    "tags": [
+      "planning"
+    ]
+  },
+  {
+    "id": "mem-t53mp8v4e",
+    "prompt_hash": "ZXJyb3JfZml4X21vZGVsX25vdF9mb3VuZA==",
+    "task_type": "error_resolution",
+    "input": "ERROR_FIX_MODEL_NOT_FOUND",
+    "output": {
+      "success": false,
+      "error": "MODEL_NOT_FOUND",
+      "message": "Mesh currently operating in autonomous recovery mode."
+    },
+    "model_used": "SYSTEM",
+    "success_rate": 1,
+    "timestamp": "2026-05-18T09:36:03.071Z",
+    "tags": [
+      "error_resolution"
+    ]
+  },
+  {
+    "id": "mem-lwnwcjtzh",
+    "prompt_hash": "Z2VuZXJhdGUgYSBzYWFzIHByb2R1Y3QgYmx1ZXByaW50IGZvcjogaGkgd2hhdCBpcyB5b3VyIG5hbWUgc3lzdGVtIC4KICAgICAgcmV0dXJuIG9ubHkgdmFsaWQganNvbi4=",
+    "task_type": "generation",
+    "input": "Generate a SaaS product blueprint for: Hi what is your name system .\n      Return ONLY valid JSON.",
+    "output": "{\"success\":false,\"error\":\"QUOTA_EXCEEDED\",\"message\":\"The AI strategist is currently resting due to quota limits.\",\"fallback\":true}",
+    "model_used": "openai/gpt-4o-mini",
+    "success_rate": 1,
+    "timestamp": "2026-05-18T12:34:50.820Z",
+    "tags": [
+      "generation"
+    ]
+  },
+  {
+    "id": "mem-1fkz3hcoh",
+    "prompt_hash": "eW91IGFyZSB0aGUgZm9yZ2VvcyByZXZpZXdlci4KcGxhbjogeyJzdHJhdGVnaWNfcGxhbiI6ImRlZmF1bHQgZXhlY3V0aW9uIiwic3RlcHMiOltdLCJlcnJvciI6InF1b3RhX2V4Y2VlZGVkIiwic3",
+    "task_type": "reasoning",
+    "input": "You are the ForgeOS Reviewer.\nPLAN: {\"strategic_plan\":\"Default Execution\",\"steps\":[],\"error\":\"QUOTA_EXCEEDED\",\"success\":false}\nBUILD: {\"error\":true,\"explanation\":\"Builder unreachable\"}\nDEBUG: {\"error\":true,\"found_issues\":[\"Debugger timed out\"]}\n\nTASK:\n1. Merge the implementation and remediation into a final consistent output.\n2. Remove any redundancy.\n3. Ensure the final result meets the original plan.\n4. Return ONLY valid JSON.\n\nJSON Structure:\n{\n  \"final_summary\": \"string\",\n  \"final_code\": \"string\",\n  \"quality_score\": number\n}",
+    "output": "{\"success\":false,\"error\":\"QUOTA_EXCEEDED\",\"message\":\"The AI strategist is currently resting due to quota limits.\",\"fallback\":true}",
+    "model_used": "openai/gpt-4o-mini",
+    "success_rate": 1,
+    "timestamp": "2026-05-18T12:54:25.792Z",
+    "tags": [
+      "reasoning"
+    ]
+  }
+]

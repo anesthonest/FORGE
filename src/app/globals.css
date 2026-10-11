@@ -1,0 +1,92 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 5% 5%;
+    --foreground: 210 20% 98%;
+    --card: 240 5% 8%;
+    --card-foreground: 210 20% 98%;
+    --popover: 240 5% 8%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 18 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 15% 35%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 18 100% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 18 100% 50%;
+    --radius: 0.25rem;
+    --sidebar-background: 240 5% 6%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 18 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 12%;
+    --sidebar-accent-foreground: 18 100% 50%;
+    --sidebar-border: 240 5% 15%;
+    --sidebar-ring: 18 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-primary-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline tracking-tight;
+  }
+}
+
+.forge-grid {
+  background-image: 
+    linear-gradient(to right, hsl(var(--muted)/0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--muted)/0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.molten-glow {
+  box-shadow: 0 0 20px -5px hsl(var(--primary));
+  transition: box-shadow 0.3s ease;
+}
+
+.molten-glow:hover {
+  box-shadow: 0 0 30px -2px hsl(var(--primary));
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted rounded-full hover:bg-secondary transition-colors;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, hsl(var(--primary)/0.05), transparent);
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+}

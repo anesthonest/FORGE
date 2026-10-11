@@ -1,0 +1,29 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "forge-hero",
+      "description": "Abstract industrial forge with glowing orange metal",
+      "imageUrl": "https://picsum.photos/seed/forge1/1200/800",
+      "imageHint": "industrial forge"
+    },
+    {
+      "id": "agent-architect",
+      "description": "Blueprint and architectural lines",
+      "imageUrl": "https://picsum.photos/seed/arch/400/400",
+      "imageHint": "blueprint architecture"
+    },
+    {
+      "id": "agent-coder",
+      "description": "Matrix like code background",
+      "imageUrl": "https://picsum.photos/seed/code/400/400",
+      "imageHint": "software code"
+    },
+    {
+      "id": "agent-debugger",
+      "description": "Microscope looking at circuitry",
+      "imageUrl": "https://picsum.photos/seed/debug/400/400",
+      "imageHint": "circuitry debugging"
+    }
+  ]
+}

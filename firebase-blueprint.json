@@ -1,0 +1,100 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Global SaaS identity and subscription state.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "plan": { "type": "string", "enum": ["free", "pro", "premium", "elite", "enterprise"] },
+        "role": { "type": "string", "enum": ["user", "admin", "operator"] },
+        "country": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "lastActive": { "type": "string", "format": "date-time" },
+        "onboarding": {
+          "type": "object",
+          "properties": {
+            "status": { "type": "string" },
+            "goal": { "type": "string" }
+          }
+        }
+      }
+    },
+    "Project": {
+      "title": "Engineering Project",
+      "description": "Persistent workspace for autonomous development.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "name": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "archived", "deploying"] },
+        "deploymentUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "ProjectFile": {
+      "title": "Project File",
+      "description": "Code artifact within a project.",
+      "type": "object",
+      "properties": {
+        "path": { "type": "string" },
+        "content": { "type": "string" },
+        "type": { "type": "string" },
+        "lastEdited": { "type": "string", "format": "date-time" }
+      }
+    },
+    "AILog": {
+      "title": "AI Execution Log",
+      "description": "Immutable telemetry for AI usage and cost auditing.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "projectId": { "type": "string" },
+        "prompt": { "type": "string" },
+        "modelUsed": { "type": "string" },
+        "tokensUsed": { "type": "number" },
+        "costEstimate": { "type": "number" },
+        "status": { "type": "string" }
+      }
+    },
+    "MemoryEntry": {
+      "title": "Cognitive Memory",
+      "description": "Persistent user context and learned patterns.",
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["fix", "decision", "pattern", "risk"] },
+        "content": { "type": "string" },
+        "goal_context": { "type": "string" },
+        "success_rate": { "type": "number" }
+      }
+    }
+  },
+  "auth": {
+    "providers": ["google.com", "password"]
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "UserProfile",
+      "description": "User identity and plan data."
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Persistent workspace metadata."
+    },
+    "/projects/{projectId}/files/{fileId}": {
+      "schema": "ProjectFile",
+      "description": "Granular code artifacts."
+    },
+    "/ai_logs/{logId}": {
+      "schema": "AILog",
+      "description": "Platform-wide usage telemetry."
+    },
+    "/memory/{uid}/entries/{entryId}": {
+      "schema": "MemoryEntry",
+      "description": "User-specific cognitive context."
+    }
+  }
+}
