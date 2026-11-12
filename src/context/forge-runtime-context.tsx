@@ -41,9 +41,18 @@ interface ForgeRuntimeState {
 
 const ForgeRuntimeContext = createContext<ForgeRuntimeState | undefined>(undefined);
 
+function SearchParamsHandler({ onActiveView }: { onActiveView: (view: string) => void }) {
+  const searchParams = useSearchParams();
+  const view = searchParams ? (searchParams.get("view") || "dashboard") : "dashboard";
+  useEffect(() => {
+    onActiveView(view);
+  }, [view, onActiveView]);
+  return null;
+}
+
 export function ForgeRuntimeProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const [activeView, setActiveView] = useState("dashboard");
   const { setUser, setProfile } = useAuthStore();
   const { updateWallet } = useWalletStore();
 
@@ -114,7 +123,7 @@ export function ForgeRuntimeProvider({ children }: { children: React.ReactNode }
         }
       }
     }, (err) => {
-      console.warn("[FORGE-MESH-SYNC] Background sync deferred:", err.message);
+      console.error("[FORGE-MESH-SYNC] Background sync deferred:", err.message, err);
       setMeshState('ready'); // Fail soft to ready to allow UI interaction
       setBootStage('STABLE');
     });
@@ -125,12 +134,13 @@ export function ForgeRuntimeProvider({ children }: { children: React.ReactNode }
     };
   }, [user, bootStage, setProfile, updateWallet, meshState]);
 
-  const activeView = searchParams.get("view") || "dashboard";
-  
   const navigate = useCallback((view: string) => {
-    const url = new URL(window.location.href);
-    url.searchParams.set("view", view);
-    router.replace(url.pathname + url.search);
+    setActiveView(view);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", view);
+      router.replace(url.pathname + url.search);
+    }
   }, [router]);
 
   const readiness = useMemo(() => ({
@@ -159,6 +169,9 @@ export function ForgeRuntimeProvider({ children }: { children: React.ReactNode }
 
   return (
     <ForgeRuntimeContext.Provider value={value}>
+      <React.Suspense fallback={null}>
+        <SearchParamsHandler onActiveView={setActiveView} />
+      </React.Suspense>
       {children}
     </ForgeRuntimeContext.Provider>
   );

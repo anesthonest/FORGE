@@ -38,7 +38,7 @@ export function MarketplacePortal() {
         const json = await res.json();
         if (json.success) setAssets(json.data);
       } catch (e) {
-        console.error("Marketplace fetch fault.");
+        console.error("Marketplace fetch fault:", e);
       } finally {
         setLoading(false);
       }

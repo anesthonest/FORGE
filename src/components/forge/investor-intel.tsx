@@ -38,7 +38,7 @@ export function InvestorIntel() {
         const json = await res.json();
         if (json.success) setData(json.data);
       } catch (e) {
-        console.error("Investor intel sync failed.");
+        console.error("Investor intel sync failed:", e);
       } finally {
         setLoading(false);
       }

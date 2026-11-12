@@ -47,7 +47,7 @@ export function OperationsCenter() {
       const json = await res.json();
       if (json.success) setHealthData(json.data);
     } catch (e) {
-      console.error("Health sync fault.");
+      console.error("Health sync fault:", e);
     } finally {
       setLoading(false);
     }

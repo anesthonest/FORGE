@@ -33,7 +33,7 @@ export function RevenueCharts() {
         const json = await res.json();
         if (json.success) setData(json.data);
       } catch (e) {
-        console.error("Revenue fetch fault.");
+        console.error("Revenue fetch fault:", e);
       } finally {
         setLoading(false);
       }

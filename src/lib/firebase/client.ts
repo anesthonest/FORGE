@@ -47,7 +47,7 @@ export function getClientFirebase() {
       if (!(clientDb as any)['_persistenceEnabled']) {
         (clientDb as any)['_persistenceEnabled'] = true;
         enableMultiTabIndexedDbPersistence(clientDb).catch((err) => {
-          console.warn('[FORGE-INFRA] Persistence deferred:', err.code);
+          console.error('[FORGE-INFRA] Persistence deferred:', err.code, err);
         });
       }
 

@@ -73,6 +73,7 @@ export function SettingsPanel() {
         description: "Your system preferences have been updated across the mesh.",
       });
     } catch (err) {
+      console.error("[FORGE-SETTINGS] Synchronization fault:", err);
       toast({
         variant: "destructive",
         title: "Synchronization Fault",

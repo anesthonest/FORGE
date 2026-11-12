@@ -1,4 +1,7 @@
 {
-  "name": "studio-9374789924",
-  "description": "App imported from Firebase Studio"
+  "name": "Forge OS",
+  "description": "Autonomous Engineering Fabric & Cognitive Control Plane",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

@@ -1,5 +1,3 @@
-'use server';
-
 /**
  * @fileOverview Forge OS Usage Intelligence Service (Phase 2 Hardened)
  * Monitors AI consumption and enforces tier-based monthly rate limits.

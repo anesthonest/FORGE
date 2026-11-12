@@ -70,12 +70,12 @@ export async function logForgeEvent(payload: ForgeEventPayload) {
     
     // A. Autonomous Reaction Pulse
     AutonomousController.processPulse(payload).catch(err => {
-      console.warn("[FORGE-AUTONOMY-FAULT] Reaction pulse failed:", err.message);
+      console.error("[FORGE-AUTONOMY-FAULT] Reaction pulse failed:", err.message);
     });
 
     // B. Real-time Anomaly Detection (Alerting)
     alertEngine.analyzeEvent(payload, docRef.id).catch(err => {
-       console.warn("[FORGE-ALERT-FAULT] Anomaly detection deferred:", err.message);
+       console.error("[FORGE-ALERT-FAULT] Anomaly detection deferred:", err.message);
     });
 
     // 4. SECURITY AUDIT MIRRORING (Redundant log for critical events)
